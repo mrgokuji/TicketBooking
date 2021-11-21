@@ -1,4 +1,4 @@
-package com.booking.seat;
+package com.booking.ticket.seat;
 
 
 import jdk.jfr.Enabled;
