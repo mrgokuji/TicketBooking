@@ -11,26 +11,26 @@ import javax.persistence.Table;
 @Table
 public class Seat {
     @Id
-    private String id;
+    private Integer id;
     private Boolean booked;
     private Integer cost;
 
     public Seat() {
     }
 
-    public Seat(String id) {
+    public Seat(Integer id) {
         this.id = id;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Seat(String id, Boolean booked, Integer cost) {
+    public Seat(Integer id, Boolean booked, Integer cost) {
         this.id = id;
         this.booked = booked;
         this.cost = cost;
