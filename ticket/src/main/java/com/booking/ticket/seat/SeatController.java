@@ -8,11 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @RestController
 public class SeatController
 {
 
     private final SeatService seatService;
+
+    @Autowired
+    public SeatController(SeatService seatService) {
+        this.seatService = seatService;
+    }
 
     @RequestMapping("getSeats")
     public List<Seat> getSeat(){
