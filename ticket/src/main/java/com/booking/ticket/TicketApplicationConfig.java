@@ -25,7 +25,12 @@ public class TicketApplicationConfig implements CommandLineRunner {
         for(Integer row = 0; row < 8; row++) {
             for (Integer col = 0; col < 8; col++) {
                 Integer id = row*10 + col;
-                Seat seat = new Seat(id, false,10);
+                Seat seat;
+                if (row>2 && row <6 && col>2 && col<6)
+                seat = new Seat(id, false,15);
+                else
+                seat = new Seat(id, false,10);
+                System.out.println(id);
                 seats.add(seat);
             }
         }
