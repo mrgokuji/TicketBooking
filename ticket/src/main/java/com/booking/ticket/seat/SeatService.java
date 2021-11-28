@@ -1,8 +1,11 @@
 // this file will contain the implementaion for the method for APIs.
-package com.example.bookingsystem.seat;
+package com.booking.ticket.seat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Component
@@ -27,7 +30,7 @@ public class SeatService {
             if (!seat.getBooked()) {
                 seat.setBooked(true);
             }
-            else seat_not_booked.add(seat.getId)
+            else seat_not_booked.add(seat.getId());
         }
         seatRepository.saveAll(seats);
         return seat_not_booked;
