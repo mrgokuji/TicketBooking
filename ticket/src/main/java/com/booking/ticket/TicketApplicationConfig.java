@@ -30,7 +30,6 @@ public class TicketApplicationConfig implements CommandLineRunner {
                 seat = new Seat(id, false,15);
                 else
                 seat = new Seat(id, false,10);
-                System.out.println(id);
                 seats.add(seat);
             }
         }
