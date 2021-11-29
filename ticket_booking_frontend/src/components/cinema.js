@@ -1,17 +1,15 @@
-// eslint-disable-next-line 
-/* eslint-disable */
-import '../App.css';
+/* eslint-disable */ 
+import "../App.css";
+import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
-import React, { useState, useEffect } from 'react';
 const axios = require('axios');
+import { Button} from 'react-bootstrap';
+import { isDOMComponent } from "react-dom/test-utils";
 
-
-//post api --> localhost:8080/bookSeats
-//get api --> localhost:8080/getSeats
-const seats = Array.from({ length: 8 * 8 }, (_, i) => i);
-
-export function Cinema({ onSelectedSeatsChange }) {
+export const Cinema = ()=> {
     const [selectedSeats, setSelectedSeats] = useState([])
+    const [totalSeats, setTotalSeats] = useState([])
+
     function handleSelectedState(seat) {
       const isSelected = selectedSeats.includes(seat)
       if (isSelected) {
@@ -19,24 +17,56 @@ export function Cinema({ onSelectedSeatsChange }) {
           selectedSeats.filter(selectedSeat => selectedSeat !== seat),
         )
       } else {
-        setSelectedSeats([...selectedSeats, seat]);
+        setSelectedSeats([...selectedSeats, seat])
       }
     }
     
-    
+    function getBookedSeats() {
+        const url = '/getSeats';
+        axios.get(url).
+        then((seats) => {
+          setTotalSeats(seats.data);
+        });
+    }
+
+    function handleBookSeat(seatsId) {
+        const url = '/bookSeats';
+        axios.post(url , seatsId).
+        then((seats) => {
+          console.log(seats);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+        setSelectedSeats([]);
+        getBookedSeats();
+    }
+
+    function bookSeat() {
+        console.log("Booking seats", selectedSeats);
+        let ids = [];
+        for(let i = 0; i< selectedSeats.length; i++) {
+          ids.push(selectedSeats[i].id);
+        }
+        handleBookSeat(ids);
+    }
+
+    useEffect(()=> {
+        getBookedSeats();
+    },[]);
+
     return (
       <div className="Cinema">
         <div className="screen" />
   
         <div className="seats">
-          {seats.map(seat => {
+          {totalSeats.map(seat => {
             const isSelected = selectedSeats.includes(seat)
-            //backend call se return array.
-            const isOccupied = false
+            const isOccupied = seat.booked
             return (
               <span
                 tabIndex="0"
-                key={seat}
+                key={seat.id}
                 className={clsx(
                   'seat',
                   isSelected && 'selected',
@@ -56,6 +86,9 @@ export function Cinema({ onSelectedSeatsChange }) {
             )
           })}
         </div>
+        <Button onClick={bookSeat}>
+            Book seat
+        </Button>
       </div>
     )
   }
