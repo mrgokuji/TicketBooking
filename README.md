@@ -2,8 +2,9 @@
 Ticket Booking system for movie screens.
 
 Clone the repo
+```
 git clone https://github.com/mrgokuji/TicketBooking.git
-
+```
 # Prerequisite
 - Java 11
 - npm 6.14.15
