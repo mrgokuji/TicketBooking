@@ -21,5 +21,5 @@ git clone https://github.com/mrgokuji/TicketBooking.git
 
 access website on 
 ```
-localhost:3000
+http://localhost:3000/
 ```
