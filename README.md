@@ -23,3 +23,6 @@ access website on
 ```
 http://localhost:3000/
 ```
+# Deployed on 
+- Backend ``` https://ticketbooking-backend.herokuapp.com/ ```
+- Frontend ``` ```
