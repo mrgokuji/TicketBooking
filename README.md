@@ -19,3 +19,7 @@ git clone https://github.com/mrgokuji/TicketBooking.git
 - npm install
 - npm start
 
+access website on 
+```
+localhost:3000
+```
