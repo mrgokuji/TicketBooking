@@ -25,4 +25,4 @@ http://localhost:3000/
 ```
 # Deployed on 
 - Backend ``` https://ticketbooking-backend.herokuapp.com/ ```
-- Frontend ``` ```
+- Frontend ``` https://ticket-booking-frontend.herokuapp.com/ ```
